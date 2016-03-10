@@ -112,7 +112,7 @@ public class Dragon implements AssignStats{
         }
 
         else
-            System.out.println(target.name + "blocked the attack!");
+            System.out.println(target.name + " blocked the attack!");
     }
 
     private int netDamage() {
