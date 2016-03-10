@@ -6,12 +6,18 @@ public class GreenDragon extends Dragon implements AssignStats{
     public static String description = "The Green dragon benefits more from health and armor, " +
             "but is less likely to crit or block attacks";
 
+    public static double spellCastChance = 0.25;
+
     public GreenDragon(String name, double health, double armor,
                        int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
                        double blockChance, double critChance) {
         super(name, health, armor,
                 attackDamageMinimum, attackDamageMaximum, spellDamage,
                 blockChance, critChance);
+    }
+
+    public GreenDragon() {
+        super();
     }
 
     @Override
