@@ -30,6 +30,4 @@ public class StarDragon extends Dragon implements AssignStats{
         critChance = critChanceStat / 150.0;
         blockChance = blockChanceStat / 100.0;
     }
-
-
 }
