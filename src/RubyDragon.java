@@ -4,7 +4,8 @@
 public class RubyDragon extends Dragon implements AssignStats{
 
     public static String description =
-            "This is the red dragon, who yields the power of Ruby!";
+            "This is the red dragon, who yields the power of Ruby! " +
+                    "They benefit a lot from spell damage, but benefit less from health and armor and attack damage.";
 
     public static double spellCastChance = 0.4;
 
