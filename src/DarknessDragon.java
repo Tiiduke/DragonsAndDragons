@@ -6,7 +6,13 @@ public class DarknessDragon extends Dragon implements AssignStats {
     public static String description = "The darkness dragon draws power from the fear of his foes! " +
             "He is a strong melee fighter, but has a small chance of casting a powerful spell!";
 
-    public static double spellCastChance = 0.1;
+    public static double spellCastChance = 0.05;
+
+    public static Spell dragonUtopia = new Spell("Dragon Utopia", 60, 80);
+    public static Spell coverOfDarkness = new Spell("Cover Of Darkness", 70, 90);
+    public static Spell endOfRealm = new Spell("End of Realm", 100, 100);
+
+    public static Spell[] spells = {dragonUtopia, coverOfDarkness, endOfRealm};
 
     public DarknessDragon(String name, double health, double armor,
                           int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -28,6 +34,10 @@ public class DarknessDragon extends Dragon implements AssignStats {
         spellDamage = (int) (stats[4] * 1.5);
         critChance = stats[5] / 250.0;
         blockChance = stats[6] / 200.0;
+    }
+
+    public String toString() {
+        return description + "\n" + "This is the powerful Darkness dragon " + name;
     }
 
 }

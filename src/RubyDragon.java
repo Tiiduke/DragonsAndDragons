@@ -9,6 +9,12 @@ public class RubyDragon extends Dragon implements AssignStats{
 
     public static double spellCastChance = 0.45;
 
+    public static Spell innervate = new Spell("Innervate", 40, 50);
+    public static Spell wisdomOfTheAncients = new Spell("Wisdom of the Ancients", 50, 60);
+    public static Spell fieryGaze = new Spell("Fiery Gaze", 30, 60);
+
+    public static Spell[] spells = {innervate, wisdomOfTheAncients, fieryGaze};
+
     public RubyDragon(String name, double health, double armor,
                       int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
                       double blockChance, double critChance) {
@@ -30,6 +36,10 @@ public class RubyDragon extends Dragon implements AssignStats{
         spellDamage = (int) (stats[4] * 1.25);
         critChance = stats[5] / 100.0;
         blockChance = stats[6] / 100.0;
+    }
+
+    public String toString() {
+        return description + "\n" + "This is the powerful Ruby dragon " + name;
     }
 
 }

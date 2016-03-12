@@ -19,7 +19,11 @@ public class Dragon implements AssignStats{
 
     public static double spellCastChance = 0.33;
 
-    public static Spell[] spells = {};
+    public static Spell flameBreath = new Spell("Flame Breath", 20, 30);
+    public static Spell poisonBreath = new Spell("Poison Breath", 24, 28);
+    public static Spell kappa = new Spell("Kappa", 6, 69);
+
+    public static Spell[] spells = {flameBreath, poisonBreath, kappa};
 
     public Dragon(String name, double health, double armor,
                   int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
