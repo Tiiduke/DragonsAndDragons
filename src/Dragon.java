@@ -19,9 +19,9 @@ public class Dragon implements AssignStats{
 
     public static double spellCastChance = 0.33;
 
-    public static Spell flameBreath = new Spell("Flame Breath", 20, 30);
-    public static Spell poisonBreath = new Spell("Poison Breath", 24, 28);
-    public static Spell kappa = new Spell("Kappa", 6, 69);
+    public static Spell flameBreath = new Spell("Flame Breath", 30, 50);
+    public static Spell poisonBreath = new Spell("Poison Breath", 35, 45);
+    public static Spell kappa = new Spell("Kappa", 60, 69);
 
     public static Spell[] spells = {flameBreath, poisonBreath, kappa};
 
@@ -106,13 +106,24 @@ public class Dragon implements AssignStats{
     }
 
     public void attack(Dragon target) {
-        if (Math.random() > target.blockChance) {
-            double damage = armorDamage(target);
+        if (Math.random() > target.blockChance)
+        {
+            if (Math.random() < spellCastChance)
+            {
+                int random = (int) (Math.random() * spells.length);
+                Spell spell = spells[random];
 
-            if (Math.random() < critChance)
-                target.health -= 2 * damage;
+                target.health -= spell.netDamage();
+            }
             else
-                target.health -= damage;
+            {
+                double damage = armorDamage(target);
+
+                if (Math.random() < critChance)
+                    target.health -= 2 * damage;
+                else
+                    target.health -= damage;
+            }
 
             //System.out.println(name + " did " + damage + " damage to " + target.name + "!");
         }
@@ -141,7 +152,7 @@ public class Dragon implements AssignStats{
             return netDamage();
     }
 
-    public void cast_spell(Spell spell, Dragon target) {
+    /*public void cast_spell(Spell spell, Dragon target) {
 
         if (Math.random() > target.blockChance) {
             int damage = spell.netDamage() + spellDamage;
@@ -151,7 +162,7 @@ public class Dragon implements AssignStats{
         }
         else
             System.out.println(target.name + " has blocked the spell!");
-    }
+    }*/
 
     public void assignStats(int[] stats) {
         health = stats[0] * 10;
