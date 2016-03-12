@@ -19,6 +19,8 @@ public class Dragon implements AssignStats{
 
     public static double spellCastChance = 0.33;
 
+    public static Spell[] spells = {};
+
     public Dragon(String name, double health, double armor,
                   int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
                   double blockChance, double critChance) {
@@ -108,11 +110,11 @@ public class Dragon implements AssignStats{
             else
                 target.health -= damage;
 
-            System.out.println(name + " did " + damage + " damage to " + target.name + "!");
+            //System.out.println(name + " did " + damage + " damage to " + target.name + "!");
         }
 
-        else
-            System.out.println(target.name + " blocked the attack!");
+        //else
+            //System.out.println(target.name + " blocked the attack!");
     }
 
     private int netDamage() {
@@ -147,16 +149,14 @@ public class Dragon implements AssignStats{
             System.out.println(target.name + " has blocked the spell!");
     }
 
-    public void assignStats(int healthStat, int armorStat,
-                            int damageStat, int spellDamageStat,
-                            int critChanceStat, int blockChanceStat) {
-        health = healthStat * 10;
-        armor = armorStat * 7.5;
-        attackDamageMinimum = (int) (damageStat * 0.4);
-        attackDamageMaximum = (int) (damageStat * 0.6);
-        spellDamage = (int) (spellDamageStat * 0.75);
-        critChance = critChanceStat / 100.0;
-        blockChance = blockChanceStat / 100.0;
+    public void assignStats(int[] stats) {
+        health = stats[0] * 10;
+        armor = stats[1] * 7.5;
+        attackDamageMinimum = (int) (stats[2] * 0.4);
+        attackDamageMaximum = (int) (stats[3] * 0.6);
+        spellDamage = (int) (stats[4] * 0.75);
+        critChance = stats[5] / 100.0;
+        blockChance = stats[6] / 100.0;
     }
 
     public String toString() {

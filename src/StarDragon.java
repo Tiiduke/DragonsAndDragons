@@ -19,15 +19,13 @@ public class StarDragon extends Dragon implements AssignStats{
     }
 
     @Override
-    public void assignStats(int healthStat, int armorStat,
-                            int damageStat, int spellDamageStat,
-                            int critChanceStat, int blockChanceStat) {
-        health = healthStat * 11.5;
-        armor = armorStat * 6.0;
-        attackDamageMinimum = (int) (damageStat * 0.45);
-        attackDamageMaximum = (int) (damageStat * 0.60);
-        spellDamage = (int) (spellDamageStat * 0.8);
-        critChance = critChanceStat / 150.0;
-        blockChance = blockChanceStat / 100.0;
+    public void assignStats(int[] stats) {
+        health = stats[0] * 11.5;
+        armor = stats[1] * 6.0;
+        attackDamageMinimum = (int) (stats[2] * 0.45);
+        attackDamageMaximum = (int) (stats[3] * 0.60);
+        spellDamage = (int) (stats[4] * 0.8);
+        critChance = stats[5] / 150.0;
+        blockChance = stats[6] / 100.0;
     }
 }

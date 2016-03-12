@@ -7,7 +7,7 @@ public class RubyDragon extends Dragon implements AssignStats{
             "This is the red dragon, who yields the power of Ruby! " +
                     "They benefit a lot from spell damage, but benefit less from health and armor and attack damage.";
 
-    public static double spellCastChance = 0.4;
+    public static double spellCastChance = 0.45;
 
     public RubyDragon(String name, double health, double armor,
                       int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -21,16 +21,15 @@ public class RubyDragon extends Dragon implements AssignStats{
         super();
     }
 
-    public void assignStats(int healthStat, int armorStat,
-                            int damageStat, int spellDamageStat,
-                            int critChanceStat, int blockChanceStat) {
-        health = healthStat * 9;
-        armor = armorStat * 6.5;
-        attackDamageMinimum = (int) (damageStat * 0.3);
-        attackDamageMaximum = (int) (damageStat * 0.5);
-        spellDamage = (int) (spellDamageStat * 1.25);
-        critChance = critChanceStat / 100.0;
-        blockChance = blockChanceStat / 100.0;
+    @Override
+    public void assignStats(int[] stats) {
+        health = stats[0] * 9;
+        armor = stats[1] * 6.5;
+        attackDamageMinimum = (int) (stats[2] * 0.3);
+        attackDamageMaximum = (int) (stats[3] * 0.5);
+        spellDamage = (int) (stats[4] * 1.25);
+        critChance = stats[5] / 100.0;
+        blockChance = stats[6] / 100.0;
     }
 
 }

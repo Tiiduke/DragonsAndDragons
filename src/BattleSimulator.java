@@ -3,10 +3,9 @@
  */
 public class BattleSimulator {
 
-    private boolean dragonsNotDead(Dragon dragon1, Dragon dragon2) {
+    public static boolean dragonsNotDead(Dragon dragon1, Dragon dragon2) {
         return dragon1.health > 0 && dragon2.health > 0;
     }
-
 
 
 
