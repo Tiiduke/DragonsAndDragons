@@ -40,50 +40,18 @@ public class BattleSimulator {
         return max;
     }
 
-    public static void changeToNextVariation(boolean[] variation) {
-        int lastMemberIndex = getLastMember(variation);
-
-        if (lastMemberIndex != variation.length - 1) {
-            variation[lastMemberIndex + 1] = true;
-            variation[lastMemberIndex] = false;
-        }
-
-
-    }
-
-    private static int getLastMember(boolean[] variation) {
-
-        for (int i = variation.length - 1; i > 0; i--) {
-            if (variation[i])
-                return i;
-        }
-
-        return 0;
-    }
-
-    private static boolean allMembersInEnd(boolean[] variation) {
-        int changeCount = 0;
-
-        boolean state = false;
-
-        for (boolean bool : variation) {
-            if (bool != state) {
-                changeCount += 1;
-                state = bool;
-            }
-
-            if (changeCount > 1)
-                return false;
-        }
-
-        return true;
-    }
-
     public static void main(String[] args) {
 
-        boolean[] a = {true, false, true, true};
+        boolean[] a = {true, false, false, true, true, false, false, true};
+        boolean[] b = {false, false, false, false, false};
 
-        System.out.println(getLastMember(a));
-        System.out.println(allMembersInEnd(a));
+        //System.out.println(getLastMember(a));
+        //System.out.println(allTruesInEnd(a));
+        //System.out.println(getTrueCountInEnd(a));
+        while (!BooleanVariation.checkForAllTrues(b)) {
+            BooleanVariation.changeToNextVariation(b);
+            System.out.println(BooleanVariation.toString(b));
+        }
+
     }
 }
