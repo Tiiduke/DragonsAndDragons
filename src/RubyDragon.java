@@ -29,10 +29,10 @@ public class RubyDragon extends Dragon implements AssignStats{
 
     @Override
     public void assignStats(int[] stats) {
-        health = stats[0] * 9;
+        health = 10 + stats[0] * 9;
         armor = stats[1] * 6.5;
-        attackDamageMinimum = (int) (stats[2] * 0.3);
-        attackDamageMaximum = (int) (stats[3] * 0.5);
+        attackDamageMinimum = 3 + (int) (stats[2] * 0.3);
+        attackDamageMaximum = 3 + (int) (stats[3] * 0.5);
         spellDamage = (int) (stats[4] * 1.25);
         critChance = stats[5] / 100.0;
         blockChance = stats[6] / 100.0;

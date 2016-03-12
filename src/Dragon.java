@@ -17,6 +17,8 @@ public class Dragon implements AssignStats{
     double blockChance;
     double critChance;
 
+    int[] stats;
+
     public static double spellCastChance = 0.33;
 
     public static Spell flameBreath = new Spell("Flame Breath", 30, 50);
@@ -113,7 +115,7 @@ public class Dragon implements AssignStats{
                 int random = (int) (Math.random() * spells.length);
                 Spell spell = spells[random];
 
-                target.health -= spell.netDamage();
+                target.health -= (spell.netDamage() + spellDamage);
             }
             else
             {
@@ -165,10 +167,10 @@ public class Dragon implements AssignStats{
     }*/
 
     public void assignStats(int[] stats) {
-        health = stats[0] * 10;
+        health = 10 + stats[0] * 10;
         armor = stats[1] * 7.5;
-        attackDamageMinimum = (int) (stats[2] * 0.4);
-        attackDamageMaximum = (int) (stats[3] * 0.6);
+        attackDamageMinimum = 3 + (int) (stats[2] * 0.4);
+        attackDamageMaximum = 3 + (int) (stats[3] * 0.6);
         spellDamage = (int) (stats[4] * 0.75);
         critChance = stats[5] / 100.0;
         blockChance = stats[6] / 100.0;
