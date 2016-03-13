@@ -39,7 +39,7 @@ public class RubyDragon extends Dragon implements AssignStats{
         attackDamageMaximum = 3 + (int) (stats[2] * 0.5);
         spellDamage = (int) (stats[3] * 1.25);
         critChance = stats[4] / 100.0;
-        blockChance = stats[5] / 100.0;
+        blockChance = stats[5] * 0.9 / 100.0;
     }
     @Override
     public void resetStats() {

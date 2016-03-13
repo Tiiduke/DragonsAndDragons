@@ -39,7 +39,7 @@ public class StarDragon extends Dragon implements AssignStats{
         attackDamageMaximum = 3 + (int) (stats[2] * 0.60);
         spellDamage = (int) (stats[3] * 0.8);
         critChance = stats[4] / 150.0;
-        blockChance = stats[5] / 100.0;
+        blockChance = stats[5] * 0.9 / 100.0;
     }
     @Override
     public void resetStats() {

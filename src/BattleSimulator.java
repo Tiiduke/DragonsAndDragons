@@ -43,6 +43,19 @@ public class BattleSimulator {
 
     }
 
+    public static void showAverageDragonStats(ArrayList<Dragon> allDragons) {
+
+        ArrayList<Dragon> rubyDragons = getTypeDragons(allDragons, RubyDragon.class);
+        ArrayList<Dragon> starDragons = getTypeDragons(allDragons, StarDragon.class);
+        ArrayList<Dragon> darknessDragons = getTypeDragons(allDragons, DarknessDragon.class);
+        ArrayList<Dragon> greenDragons = getTypeDragons(allDragons, GreenDragon.class);
+
+        System.out.println("Ruby Dragons: " + getAverageWinningStats(rubyDragons, allDragons));
+        System.out.println("Star Dragons: " + getAverageWinningStats(starDragons, allDragons));
+        System.out.println("Darkness Dragons: " + getAverageWinningStats(darknessDragons, allDragons));
+        System.out.println("Green Dragons: " + getAverageWinningStats(greenDragons, allDragons));
+    }
+
     public static String getAverageWinningStats(ArrayList<Dragon> typeDragons, ArrayList<Dragon> allDragons) {
 
         double[] total = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
@@ -53,6 +66,8 @@ public class BattleSimulator {
             for (Dragon typeDragon : typeDragons) {
 
                 Dragon winner = getFightWinner(testDragon, typeDragon);
+                testDragon.resetStats();
+                typeDragon.resetStats();
 
                 if (winner.getClass() == typeDragon.getClass()) {
                     addElements(total, winner.stats);
@@ -60,22 +75,11 @@ public class BattleSimulator {
                 }
 
                 fightCount++;
-                //System.out.println(fightCount);
             }
-            System.out.println("Fights done for one dragon " + fightCount);
-
-            for (Dragon dragon : typeDragons)
-                dragon.resetStats();
-
-            for (Dragon dragon: allDragons)
-                dragon.resetStats();
         }
 
-        for (Dragon dragon : allDragons)
-            dragon.resetStats();
 
-
-        divideElements(total, fightCount);
+        divideElements(total, winCount);
 
         String statString = arrayToString(total);
 
@@ -139,13 +143,9 @@ public class BattleSimulator {
 
     public static void main(String[] args) {
 
-        ArrayList<Dragon> dragons = createDragons(5);
+        ArrayList<Dragon> dragons = createDragons(3);
 
-        ArrayList<Dragon> rubyDragons = getTypeDragons(dragons, RubyDragon.class);
-
-
-
-        System.out.println(getAverageWinningStats(rubyDragons, dragons));
+        showAverageDragonStats(dragons);
 
         /*Dragon dragon1 = new DarknessDragon();
 
