@@ -32,6 +32,7 @@ public class StarDragon extends Dragon implements AssignStats{
 
     @Override
     public void assignStats(int[] stats) {
+        this.stats = stats;
         health = 10 + stats[0] * 11.5;
         armor = stats[1] * 6.0;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.45);

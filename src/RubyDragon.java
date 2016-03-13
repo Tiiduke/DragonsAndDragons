@@ -33,6 +33,7 @@ public class RubyDragon extends Dragon implements AssignStats{
 
     @Override
     public void assignStats(int[] stats) {
+        this.stats = stats;
         health = 10 + stats[0] * 9;
         armor = stats[1] * 6.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.3);

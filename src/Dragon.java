@@ -25,7 +25,7 @@ public class Dragon implements AssignStats{
     public static Spell poisonBreath = new Spell("Poison Breath", 35, 45);
     public static Spell kappa = new Spell("Kappa", 60, 69);
 
-    public static Spell[] spells = {flameBreath, poisonBreath, kappa};
+    public Spell[] spells = {flameBreath, poisonBreath, kappa};
 
     public Dragon(String name, double health, double armor,
                   int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -187,6 +187,10 @@ public class Dragon implements AssignStats{
         spellDamage = (int) (stats[3] * 0.75);
         critChance = stats[4] / 100.0;
         blockChance = stats[5] / 100.0;
+    }
+
+    public void resetStats() {
+        assignStats(stats);
     }
 
     public String toString() {

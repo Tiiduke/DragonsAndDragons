@@ -27,11 +27,12 @@ public class GreenDragon extends Dragon implements AssignStats{
     }
 
     public GreenDragon(Dragon dragon) {
-        super(dragon);
+        super();
     }
 
     @Override
     public void assignStats(int[] stats) {
+        this.stats = stats;
         health = 10 + stats[0] * 12;
         armor = stats[1] * 8.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.4);
