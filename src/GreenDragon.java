@@ -3,16 +3,11 @@
  */
 public class GreenDragon extends Dragon implements AssignStats{
 
-    public static String description = "The Green dragon benefits more from health and armor, " +
-            "but is less likely to crit or block attacks";
+    double spellCastChance;
 
-    public static double spellCastChance = 0.25;
-
-    public static Spell centrausCall = new Spell("Centaur's Call", 25, 35);
-    public static Spell powerOfTheWild = new Spell("Power of the Wild", 10, 50);
-    public static Spell emeraldBreath = new Spell("Emerald Breath", 40, 40);
-
-    public static Spell[] spells = {centrausCall, powerOfTheWild, emeraldBreath};
+    public static Spell centaursCall = new Spell("Centaur's Call", 15, 25);
+    public static Spell powerOfTheWild = new Spell("Power of the Wild", 5, 25);
+    public static Spell emeraldBreath = new Spell("Emerald Breath", 20, 20);
 
     public GreenDragon(String name, double health, double armor,
                        int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -20,20 +15,25 @@ public class GreenDragon extends Dragon implements AssignStats{
         super(name, health, armor,
                 attackDamageMinimum, attackDamageMaximum, spellDamage,
                 blockChance, critChance);
+        this.spells = new Spell[] {centaursCall, powerOfTheWild, emeraldBreath};
+        this.spellCastChance = 0.25;
     }
 
     public GreenDragon() {
-        super();
+        this.spells = new Spell[] {centaursCall, powerOfTheWild, emeraldBreath};
+        this.spellCastChance = 0.25;
     }
 
     public GreenDragon(Dragon dragon) {
-        super();
+        super(dragon);
+        this.spells = new Spell[] {centaursCall, powerOfTheWild, emeraldBreath};
+        this.spellCastChance = 0.25;
     }
 
     @Override
     public void assignStats(int[] stats) {
         this.stats = stats;
-        health = 10 + stats[0] * 12;
+        health = 100 + stats[0] * 12.0;
         armor = stats[1] * 8.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.4);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.6);
@@ -41,9 +41,9 @@ public class GreenDragon extends Dragon implements AssignStats{
         critChance = stats[4] / 125.0;
         blockChance = stats[5] / 125.0;
     }
-
-    public String toString() {
-        return description + "\n" + "This is the powerful Green dragon " + name;
+    @Override
+    public void resetStats() {
+        assignStats(stats);
     }
 
 }

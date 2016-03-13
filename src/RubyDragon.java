@@ -3,17 +3,11 @@
  */
 public class RubyDragon extends Dragon implements AssignStats{
 
-    public static String description =
-            "This is the red dragon, who yields the power of Ruby! " +
-                    "They benefit a lot from spell damage, but benefit less from health and armor and attack damage.";
+    double spellCastChance;
 
-    public static double spellCastChance = 0.45;
-
-    public static Spell innervate = new Spell("Innervate", 40, 50);
-    public static Spell wisdomOfTheAncients = new Spell("Wisdom of the Ancients", 50, 60);
-    public static Spell fieryGaze = new Spell("Fiery Gaze", 30, 60);
-
-    public static Spell[] spells = {innervate, wisdomOfTheAncients, fieryGaze};
+    public static Spell innervate = new Spell("Innervate", 20, 25);
+    public static Spell wisdomOfTheAncients = new Spell("Wisdom of the Ancients", 25, 30);
+    public static Spell fieryGaze = new Spell("Fiery Gaze", 15, 30);
 
     public RubyDragon(String name, double health, double armor,
                       int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -21,20 +15,25 @@ public class RubyDragon extends Dragon implements AssignStats{
         super(name, health, armor,
                 attackDamageMinimum, attackDamageMaximum, spellDamage,
                 blockChance, critChance);
+        this.spells = new Spell[] {innervate, wisdomOfTheAncients, fieryGaze};
+        this.spellCastChance = 0.40;
     }
 
     public RubyDragon() {
-        super();
+        this.spells = new Spell[] {innervate, wisdomOfTheAncients, fieryGaze};
+        this.spellCastChance = 0.40;
     }
 
     public RubyDragon(Dragon dragon) {
         super(dragon);
+        this.spells = new Spell[] {innervate, wisdomOfTheAncients, fieryGaze};
+        this.spellCastChance = 0.40;
     }
 
     @Override
     public void assignStats(int[] stats) {
         this.stats = stats;
-        health = 10 + stats[0] * 9;
+        health = 100 + stats[0] * 9.0;
         armor = stats[1] * 6.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.3);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.5);
@@ -42,9 +41,9 @@ public class RubyDragon extends Dragon implements AssignStats{
         critChance = stats[4] / 100.0;
         blockChance = stats[5] / 100.0;
     }
-
-    public String toString() {
-        return description + "\n" + "This is the powerful Ruby dragon " + name;
+    @Override
+    public void resetStats() {
+        assignStats(stats);
     }
 
 }

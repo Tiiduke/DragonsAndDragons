@@ -14,7 +14,7 @@ public class Spell {
     }
 
     public int netDamage() {
-        return (int) (Math.random() * (maximumDamage - minimumDamage)) + minimumDamage;
+        return (int) (Math.random() * (maximumDamage - minimumDamage) + minimumDamage);
     }
 
     public String toString() {

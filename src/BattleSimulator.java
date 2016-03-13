@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -5,13 +6,9 @@ import java.util.ArrayList;
  */
 public class BattleSimulator {
 
-    public static boolean dragonsNotDead(Dragon dragon1, Dragon dragon2) {
-        return dragon1.health > 0 && dragon2.health > 0;
-    }
-
     public static ArrayList<Dragon> createDragons(int amountOfBalances) {
 
-        Dragon[] dragonTypes = {new GreenDragon(), new DarknessDragon(), new RubyDragon(), new StarDragon()};
+        int DRAGON_TYPE_COUNT = 4;
 
         boolean[] variation = new boolean[6];
 
@@ -24,7 +21,7 @@ public class BattleSimulator {
 
             for (int i = 0; i < amountOfBalances; i++) {
 
-                for (int j = 0; j < dragonTypes.length; j++) {
+                for (int j = 0; j < DRAGON_TYPE_COUNT; j++) {
                     Dragon dragon;
 
                     switch (j) {
@@ -35,11 +32,10 @@ public class BattleSimulator {
                         default: dragon = new Dragon(); break;
                     }
 
-                    dragon.assignStats(getStats(probabilities));
+                    dragon.assignStats(Stats.getStats(probabilities));
                     dragons.add(dragon);
                 }
-
-                balanceArray(probabilities);
+                Stats.balanceArray(probabilities);
             }
         }
 
@@ -47,71 +43,116 @@ public class BattleSimulator {
 
     }
 
-    public static void balanceArray(double[] probabilities) {
+    public static String getAverageWinningStats(ArrayList<Dragon> typeDragons, ArrayList<Dragon> allDragons) {
 
-        double sum = 0.0;
-        double max = max(probabilities);
+        double[] total = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        int winCount = 0;
+        int fightCount = 0;
 
-        for (int i = 0; i < probabilities.length; i++) {
-            if (probabilities[i] == max)
-            {
-                sum += probabilities[i] * 0.2;
-                probabilities[i] = 0.8 * probabilities[i];
+        for (Dragon testDragon : allDragons) {
+            for (Dragon typeDragon : typeDragons) {
+
+                Dragon winner = getFightWinner(testDragon, typeDragon);
+
+                if (winner.getClass() == typeDragon.getClass()) {
+                    addElements(total, winner.stats);
+                    winCount++;
+                }
+
+                fightCount++;
+                //System.out.println(fightCount);
             }
+            System.out.println("Fights done for one dragon " + fightCount);
+
+            for (Dragon dragon : typeDragons)
+                dragon.resetStats();
+
+            for (Dragon dragon: allDragons)
+                dragon.resetStats();
         }
 
-        double difference = sum / probabilities.length;
-        //Spreads difference
-        for (int i = 0; i < probabilities.length; i++) {
-            probabilities[i] = probabilities[i] + difference;
-        }
+        for (Dragon dragon : allDragons)
+            dragon.resetStats();
+
+
+        divideElements(total, fightCount);
+
+        String statString = arrayToString(total);
+
+        return statString+ " Fight count: " + fightCount + " Win count: " + winCount;
+
     }
 
-    public static int[] getStats(double[] probabilities) {
+    public static ArrayList<Dragon> getTypeDragons(ArrayList<Dragon> allDragons, Class<?> dragonType) {
 
-        int[] stats = new int[probabilities.length];
+        ArrayList<Dragon> typeDragons = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            stats[getProbabilisticInteger(probabilities)]++;
-        }
+        for (Dragon dragon : allDragons)
+            if (dragonType == dragon.getClass())
+                typeDragons.add(dragon);
 
-        return stats;
+        return typeDragons;
     }
 
-    private static int getProbabilisticInteger(double[] probabilities) {
-        double sum = 0.0;
-        double random = Math.random();
+    public static Dragon getFightWinner(Dragon dragon1, Dragon dragon2) {
 
-        for (int i = 0; i < probabilities.length; i++) {
-            sum += probabilities[i];
-
-            if (sum > random)
-                return i;
+        while(dragonsNotDead(dragon1, dragon2)) {
+            dragon1.attack(dragon2);
+            dragon2.attack(dragon1);
         }
 
-        return probabilities.length - 1;
+        if (dragon1.health > 0)
+            return dragon1;
+        return dragon2;
     }
 
-    private static double max(double[] list) {
-        double max = Double.NEGATIVE_INFINITY;
+    public static boolean dragonsNotDead(Dragon dragon1, Dragon dragon2) {
+        return dragon1.health > 0 && dragon2.health > 0;
+    }
 
-        for (double number : list) {
-            if (number > max)
-                max = number;
+    private static String arrayToString(double[] array) {
+
+        String total = "{";
+
+        for (double d : array)
+            total += d + " ";
+
+        total += "}";
+
+        return total;
+    }
+
+    private static void divideElements(double[] array, int amount) {
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] /= amount;
         }
 
-        return max;
+    }
+
+    private static void addElements(double[] array1, int[] array2) {
+
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] += array2[i];
+        }
     }
 
     public static void main(String[] args) {
 
-        boolean[] a = {false, true, false, false, false, false, true};
-        boolean[] b = {false, false, false, false, false, false};
+        ArrayList<Dragon> dragons = createDragons(5);
 
-        double[] c = BooleanVariation.getProbabilityArray(a);
+        ArrayList<Dragon> rubyDragons = getTypeDragons(dragons, RubyDragon.class);
 
-        /*ArrayList<Dragon> dragons = createDragons(5);
-        System.out.println(dragons.size());*/
+
+
+        System.out.println(getAverageWinningStats(rubyDragons, dragons));
+
+        /*Dragon dragon1 = new DarknessDragon();
+
+        int[] stats = {10, 0, 0, 0, 0, 0};
+        dragon1.assignStats(stats);
+
+        System.out.println(dragon1);*/
 
 
     }

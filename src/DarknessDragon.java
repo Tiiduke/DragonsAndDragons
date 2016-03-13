@@ -3,16 +3,11 @@
  */
 public class DarknessDragon extends Dragon implements AssignStats {
 
-    public static String description = "The darkness dragon draws power from the fear of his foes! " +
-            "He is a strong melee fighter, but has a small chance of casting a powerful spell!";
+    double spellCastChance;
 
-    public static double spellCastChance = 0.05;
-
-    public static Spell dragonUtopia = new Spell("Dragon Utopia", 60, 80);
-    public static Spell coverOfDarkness = new Spell("Cover Of Darkness", 70, 90);
-    public static Spell endOfRealm = new Spell("End of Realm", 100, 100);
-
-    public static Spell[] spells = {dragonUtopia, coverOfDarkness, endOfRealm};
+    public static Spell dragonUtopia = new Spell("Dragon Utopia", 30, 40);
+    public static Spell coverOfDarkness = new Spell("Cover Of Darkness", 35, 45);
+    public static Spell endOfRealm = new Spell("End of Realm", 50, 50);
 
     public DarknessDragon(String name, double health, double armor,
                           int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -20,19 +15,25 @@ public class DarknessDragon extends Dragon implements AssignStats {
         super(name, health, armor,
                 attackDamageMinimum, attackDamageMaximum, spellDamage,
                 blockChance, critChance);
+        this.spells = new Spell[] {dragonUtopia, coverOfDarkness, endOfRealm};
+        this.spellCastChance = 0.05;
     }
 
     public DarknessDragon() {
+        this.spells = new Spell[] {dragonUtopia, coverOfDarkness, endOfRealm};
+        this.spellCastChance = 0.05;
     }
 
     public DarknessDragon(Dragon dragon) {
         super(dragon);
+        this.spells = new Spell[] {dragonUtopia, coverOfDarkness, endOfRealm};
+        this.spellCastChance = 0.05;
     }
 
     @Override
     public void assignStats(int[] stats) {
         this.stats = stats;
-        health = 10 + stats[0] * 13.5;
+        health = 100 + stats[0] * 13.5;
         armor = stats[1] * 9.0;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.55);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.70);
@@ -40,9 +41,8 @@ public class DarknessDragon extends Dragon implements AssignStats {
         critChance = stats[4] / 250.0;
         blockChance = stats[5] / 200.0;
     }
-
-    public String toString() {
-        return description + "\n" + "This is the powerful Darkness dragon " + name;
+    @Override
+    public void resetStats() {
+        assignStats(stats);
     }
-
 }

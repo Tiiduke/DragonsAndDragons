@@ -3,12 +3,13 @@
  */
 public class Test {
     public static void main(String[] args) {
-        Dragon dragon1 = new GreenDragon();
-        Dragon dragon2 = new GreenDragon(dragon1);
+        Dragon dragon1 = new RubyDragon();
+        Dragon dragon2 = new Dragon(dragon1);
 
         dragon1.name = "Tiit";
 
-        System.out.println(dragon2.spellCastChance);
+        for (Spell spell : dragon2.spells)
+            System.out.println(spell);
 
     }
 }
