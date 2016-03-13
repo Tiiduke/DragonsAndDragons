@@ -31,10 +31,10 @@ public class StarDragon extends Dragon implements AssignStats{
         health = 10 + stats[0] * 11.5;
         armor = stats[1] * 6.0;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.45);
-        attackDamageMaximum = 3 + (int) (stats[3] * 0.60);
-        spellDamage = (int) (stats[4] * 0.8);
-        critChance = stats[5] / 150.0;
-        blockChance = stats[6] / 100.0;
+        attackDamageMaximum = 3 + (int) (stats[2] * 0.60);
+        spellDamage = (int) (stats[3] * 0.8);
+        critChance = stats[4] / 150.0;
+        blockChance = stats[5] / 100.0;
     }
 
     public String toString() {

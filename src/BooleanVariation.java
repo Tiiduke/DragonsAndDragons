@@ -132,6 +132,19 @@ public abstract class BooleanVariation {
         return true;
     }
 
+    public static double[] getProbabilityArray(boolean[] variation) {
+
+        int memberCount = getMemberCount(variation);
+        double[] probabilities = new double[variation.length];
+
+        for (int i = 0; i < variation.length; i++) {
+            if(variation[i])
+                probabilities[i] = 1.0 / memberCount;
+        }
+
+        return probabilities;
+    }
+
     public static String toString(boolean[] variation) {
 
         String string = "{";

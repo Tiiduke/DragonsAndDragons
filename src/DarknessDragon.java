@@ -30,10 +30,10 @@ public class DarknessDragon extends Dragon implements AssignStats {
         health = 10 + stats[0] * 13.5;
         armor = stats[1] * 9.0;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.55);
-        attackDamageMaximum = 3 + (int) (stats[3] * 0.70);
-        spellDamage = (int) (stats[4] * 1.5);
-        critChance = stats[5] / 250.0;
-        blockChance = stats[6] / 200.0;
+        attackDamageMaximum = 3 + (int) (stats[2] * 0.70);
+        spellDamage = (int) (stats[3] * 1.5);
+        critChance = stats[4] / 250.0;
+        blockChance = stats[5] / 200.0;
     }
 
     public String toString() {

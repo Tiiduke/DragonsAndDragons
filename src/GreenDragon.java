@@ -31,10 +31,10 @@ public class GreenDragon extends Dragon implements AssignStats{
         health = 10 + stats[0] * 12;
         armor = stats[1] * 8.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.4);
-        attackDamageMaximum = 3 + (int) (stats[3] * 0.6);
-        spellDamage = (int) (stats[4] * 0.75);
-        critChance = stats[5] / 125.0;
-        blockChance = stats[6] / 125.0;
+        attackDamageMaximum = 3 + (int) (stats[2] * 0.6);
+        spellDamage = (int) (stats[3] * 0.75);
+        critChance = stats[4] / 125.0;
+        blockChance = stats[5] / 125.0;
     }
 
     public String toString() {

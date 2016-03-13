@@ -170,14 +170,16 @@ public class Dragon implements AssignStats{
         health = 10 + stats[0] * 10;
         armor = stats[1] * 7.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.4);
-        attackDamageMaximum = 3 + (int) (stats[3] * 0.6);
-        spellDamage = (int) (stats[4] * 0.75);
-        critChance = stats[5] / 100.0;
-        blockChance = stats[6] / 100.0;
+        attackDamageMaximum = 3 + (int) (stats[2] * 0.6);
+        spellDamage = (int) (stats[3] * 0.75);
+        critChance = stats[4] / 100.0;
+        blockChance = stats[5] / 100.0;
     }
 
     public String toString() {
-        return description + "\n" + "This is the mighty Dragon " + name;
+
+        String stats = health + " " + armor + " " + attackDamageMinimum + " " + attackDamageMaximum + " " + spellDamage + " " + blockChance + " " + critChance;
+        return stats + name;
     }
 
 
