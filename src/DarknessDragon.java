@@ -25,6 +25,10 @@ public class DarknessDragon extends Dragon implements AssignStats {
     public DarknessDragon() {
     }
 
+    public DarknessDragon(Dragon dragon) {
+        super(dragon);
+    }
+
     @Override
     public void assignStats(int[] stats) {
         health = 10 + stats[0] * 13.5;

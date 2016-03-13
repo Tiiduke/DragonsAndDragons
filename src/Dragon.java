@@ -40,6 +40,18 @@ public class Dragon implements AssignStats{
         this.critChance = critChance;
     }
 
+    public Dragon(Dragon dragon) {
+        this.name = dragon.name;
+        this.health = dragon.health;
+        this.armor = dragon.armor;
+        this.attackDamageMinimum = dragon.attackDamageMinimum;
+        this.attackDamageMaximum = dragon.attackDamageMaximum;
+        this.spellDamage = dragon.spellDamage;
+        this.blockChance = dragon.blockChance;
+        this.critChance = dragon.critChance;
+    }
+
+
     public Dragon() {
     }
 
@@ -167,6 +179,7 @@ public class Dragon implements AssignStats{
     }*/
 
     public void assignStats(int[] stats) {
+        this.stats = stats;
         health = 10 + stats[0] * 10;
         armor = stats[1] * 7.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.4);

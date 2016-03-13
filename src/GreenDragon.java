@@ -26,6 +26,10 @@ public class GreenDragon extends Dragon implements AssignStats{
         super();
     }
 
+    public GreenDragon(Dragon dragon) {
+        super(dragon);
+    }
+
     @Override
     public void assignStats(int[] stats) {
         health = 10 + stats[0] * 12;

@@ -110,10 +110,15 @@ public class BattleSimulator {
 
         double[] c = BooleanVariation.getProbabilityArray(a);
 
-        ArrayList<Dragon> dragons = createDragons(5);
+        /*ArrayList<Dragon> dragons = createDragons(5);
+        System.out.println(dragons.size());*/
 
+        Dragon dragon1 = new Dragon();
+        Dragon dragon2 = new GreenDragon(dragon1);
 
-        System.out.println(dragons.size());
+        dragon1.name = "Tiit";
+
+        System.out.println(dragon2.name);
 
     }
 }

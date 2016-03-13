@@ -27,6 +27,10 @@ public class RubyDragon extends Dragon implements AssignStats{
         super();
     }
 
+    public RubyDragon(Dragon dragon) {
+        super(dragon);
+    }
+
     @Override
     public void assignStats(int[] stats) {
         health = 10 + stats[0] * 9;
