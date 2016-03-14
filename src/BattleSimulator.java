@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -146,14 +145,6 @@ public class BattleSimulator {
         ArrayList<Dragon> dragons = createDragons(3);
 
         showAverageDragonStats(dragons);
-
-        /*Dragon dragon1 = new DarknessDragon();
-
-        int[] stats = {10, 0, 0, 0, 0, 0};
-        dragon1.assignStats(stats);
-
-        System.out.println(dragon1);*/
-
 
     }
 }

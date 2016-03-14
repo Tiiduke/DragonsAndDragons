@@ -39,7 +39,7 @@ public class DarknessDragon extends Dragon implements AssignStats {
         attackDamageMaximum = 3 + (int) (stats[2] * 0.70);
         spellDamage = (int) (stats[3] * 1.5);
         critChance = stats[4] / 250.0;
-        blockChance = stats[5] / 200.0;
+        blockChance = stats[5] * 0.9 / 200.0;
     }
     @Override
     public void resetStats() {

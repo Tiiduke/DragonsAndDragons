@@ -39,11 +39,10 @@ public class GreenDragon extends Dragon implements AssignStats{
         attackDamageMaximum = 3 + (int) (stats[2] * 0.6);
         spellDamage = (int) (stats[3] * 0.75);
         critChance = stats[4] / 125.0;
-        blockChance = stats[5] / 125.0;
+        blockChance = stats[5] * 0.9 / 125.0;
     }
     @Override
     public void resetStats() {
         assignStats(stats);
     }
-
 }

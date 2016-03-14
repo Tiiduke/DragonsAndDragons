@@ -210,6 +210,4 @@ public class Dragon implements AssignStats{
 
         return stats + name + this.spells[0];
     }
-
-
 }
