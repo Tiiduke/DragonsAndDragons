@@ -8,7 +8,7 @@ public class Test {
 
         dragon1.name = "Tiit";
 
-        for (Spell spell : dragon2.spells)
+        for (Spell spell : dragon1.spells)
             System.out.println(spell);
 
     }
