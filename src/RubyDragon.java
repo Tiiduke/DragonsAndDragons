@@ -3,11 +3,9 @@
  */
 public class RubyDragon extends Dragon implements AssignStats{
 
-    double spellCastChance;
-
-    public static Spell innervate = new Spell("Innervate", 20, 25);
-    public static Spell wisdomOfTheAncients = new Spell("Wisdom of the Ancients", 25, 30);
-    public static Spell fieryGaze = new Spell("Fiery Gaze", 15, 30);
+    public static Spell innervate = new Spell("Innervate", 20, 30);
+    public static Spell wisdomOfTheAncients = new Spell("Wisdom of the Ancients", 25, 35);
+    public static Spell fieryGaze = new Spell("Fiery Gaze", 25, 45);
 
     public RubyDragon(String name, double health, double armor,
                       int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
@@ -33,13 +31,14 @@ public class RubyDragon extends Dragon implements AssignStats{
     @Override
     public void assignStats(int[] stats) {
         this.stats = stats;
-        health = 100 + stats[0] * 9.0;
-        armor = stats[1] * 6.5;
-        attackDamageMinimum = 3 + (int) (stats[2] * 0.3);
-        attackDamageMaximum = 3 + (int) (stats[2] * 0.5);
+        this.spellCastChance = 0.40;
+        health = 80 + stats[0] * 7.5;
+        armor = stats[1] * 5.0;
+        attackDamageMinimum = 1 + (int) (stats[2] * 0.3);
+        attackDamageMaximum = 1 + (int) (stats[2] * 0.45);
         spellDamage = (int) (stats[3] * 1.25);
-        critChance = stats[4] / 100.0;
-        blockChance = stats[5] * 0.9 / 100.0;
+        critChance = stats[4] / 125.0;
+        blockChance = stats[5] * 0.9 / 150.0;
     }
     @Override
     public void resetStats() {

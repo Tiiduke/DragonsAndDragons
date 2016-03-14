@@ -25,8 +25,6 @@ public class Dragon implements AssignStats{
     public Spell kappa = new Spell("Kappa", 30, 69);
 
 
-
-
     public Dragon(String name, double health, double armor,
                   int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
                   double blockChance, double critChance) {
@@ -52,7 +50,7 @@ public class Dragon implements AssignStats{
         this.blockChance = dragon.blockChance;
         this.critChance = dragon.critChance;
         this.spells = dragon.spells;
-        this.spellCastChance = 0.33;
+        this.spellCastChance = dragon.spellCastChance;
     }
 
 
