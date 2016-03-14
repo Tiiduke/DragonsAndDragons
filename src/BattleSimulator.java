@@ -149,7 +149,7 @@ public class BattleSimulator {
 
         ArrayList<Dragon> dragons = createDragons(5);
 
-        showAverageDragonStats(dragons, 5);
+        showAverageDragonStats(dragons, 1);
 
     }
 }
