@@ -50,7 +50,7 @@ public class Test {
             String valik = sc.nextLine();
 
             if (valik.equals("Flame Breath")) {
-                dragon2.cast_spell(Dragon.flameBreath, dragon1);
+                dragon2.cast_spell(dragon2.flameBreath, dragon1);
             } else if (valik.equals("Poison Breath")) {
                 dragon2.cast_spell(Dragon.poisonBreath, dragon1);
             } else if (valik.equals("Kappa")) {

@@ -123,15 +123,15 @@ public class Dragon implements AssignStats{
         this.critChance = critChance;
     }
 
-    public void attack(Dragon target) {
+    public void simulationAttack(Dragon target) {
         if (Math.random() > target.blockChance)
-           /* if (Math.random() < this.spellCastChance)
+            if (Math.random() < this.spellCastChance)
             {
                 int random = (int) (Math.random() * this.spells.length);
                 Spell spell = this.spells[random];
 
                 target.health -= (spell.netDamage() + this.spellDamage);
-            }*/
+            }
             else
             {
                 double damage = armorDamage(target);
@@ -140,14 +140,7 @@ public class Dragon implements AssignStats{
                     target.health -= 2 * damage;
                 else
                     target.health -= damage;
-
-                System.out.println(name + " did " + damage + " damage to " + target.name + "!");
             }
-
-            //System.out.println(name + " did " + damage + " damage to " + target.name + "!");
-
-        else
-                System.out.println(target.name + " blocked the attack!");
     }
 
     private int netDamage() {

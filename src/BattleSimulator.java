@@ -105,8 +105,8 @@ public class BattleSimulator {
     public static Dragon getFightWinner(Dragon dragon1, Dragon dragon2) {
 
         while(dragonsNotDead(dragon1, dragon2)) {
-            dragon1.attack(dragon2);
-            dragon2.attack(dragon1);
+            dragon1.simulationAttack(dragon2);
+            dragon2.simulationAttack(dragon1);
         }
 
         if (dragon1.health > 0)
@@ -147,9 +147,9 @@ public class BattleSimulator {
 
     public static void main(String[] args) {
 
-        ArrayList<Dragon> dragons = createDragons(5);
+        //ArrayList<Dragon> dragons = createDragons(5);
 
-        showAverageDragonStats(dragons, 1);
+        //showAverageDragonStats(dragons, 1);
 
     }
 }
