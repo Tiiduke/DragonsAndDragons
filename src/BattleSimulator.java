@@ -93,7 +93,7 @@ public class BattleSimulator {
 
     public static ArrayList<Dragon> getTypeDragons(ArrayList<Dragon> allDragons, Class<?> dragonType) {
 
-        ArrayList<Dragon> typeDragons = new ArrayList<>();
+        ArrayList<Dragon> typeDragons = new ArrayList<Dragon>();
 
         for (Dragon dragon : allDragons)
             if (dragonType == dragon.getClass())
