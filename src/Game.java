@@ -1,10 +1,23 @@
 import java.util.Scanner;
-import java.util.concurrent.Exchanger;
 
 /**
  * Created by Tiit on 10.03.2016.
  */
 public class Game {
+
+    public static int getSpellInt(Dragon dragon) throws Exception{
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Valige loits mida soovite kasutada!");
+        System.out.println("Iga loitsu tugevusele liitub " + dragon.spellDamage + " tugevust!");
+        System.out.println(dragon.spellsToString());
+
+        int spellNumber = Integer.parseInt(scan.nextLine());
+        System.out.println("Valisite loitsu " + dragon.spells[spellNumber - 1]);
+
+        return spellNumber - 1;
+    }
     public static void main(String[] args) throws Exception{
 
         Dragon opponentDragon = DragonCreator.defaultDragons[(int) (Math.random() * DragonCreator.defaultDragons.length)];
@@ -20,12 +33,9 @@ public class Game {
         while (BattleSimulator.dragonsNotDead(playerDragon, opponentDragon)) {
             if (Math.random() < playerDragon.spellCastChance) {
 
-                System.out.println(playerDragon.spellsToString());
-                System.out.println("Valige loits mida soovite kasutada!");
+                System.out.println(playerDragon.name + " has attacked " + opponentDragon.name);
 
-                String spellString = scan.nextLine();
-                System.out.print("");
-                int spellNumber = Integer.parseInt(spellString);
+                int spellNumber = getSpellInt(playerDragon);
 
                 playerDragon.playerCastspell(spellNumber, opponentDragon);
             }

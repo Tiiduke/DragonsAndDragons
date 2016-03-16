@@ -154,6 +154,8 @@ public class Dragon implements AssignStats{
 
     public void simulationCombinedAttackWithOutput(Dragon target) {
 
+        System.out.println(name + " has attacked " + target.name);
+
         if (Math.random() > target.blockChance) {
             if (Math.random() < this.spellCastChance) {
 
@@ -162,20 +164,21 @@ public class Dragon implements AssignStats{
             }
             else {
 
-                System.out.print(name + " has attacked " + target.name);
-
                 double damage = armorDamage(target);
 
                 if (Math.random() < critChance) {
                     target.health -= 2 * damage;
-                    System.out.println("\n" + name + " did critical damage worth " + damage * 2 + " to " + target.name + "!");
+                    System.out.println(name + " did critical damage worth " + damage * 2 + " to " + target.name + "!");
                 }
                 else {
                     target.health -= damage;
-                    System.out.println("\n" + name + " did " + damage + " damage to " + target.name + "!");
+                    System.out.println(name + " did " + damage + " damage to " + target.name + "!");
                 }
             }
         }
+
+        else
+            System.out.println(target.name + " blocked the attack!");
     }
 
     public void playerMeleeAttack(Dragon target) {
@@ -225,10 +228,12 @@ public class Dragon implements AssignStats{
     }
 
     private void castSpellWithOutput(Spell spell, Dragon target) {
+
+        System.out.println(name + " casted " + spell.name + "!");
+
         if (Math.random() > target.blockChance) {
             int damage = spell.netDamage() + spellDamage;
             target.health -= damage;
-            System.out.println(name + " casted " + spell.name + "!");
             System.out.println(name + " did " + damage + " damage to " + target.name + "!");
         }
         else
