@@ -3,4 +3,5 @@
  */
 public interface AssignStats {
     public void assignStats(int[] stats);
+    public void resetStats();
 }
