@@ -81,7 +81,7 @@ public class DragonCreator {
         if (remainingStatPoints > 0)
             dragonStats[0] += remainingStatPoints;
 
-        scan.close();
+        //scan.close();
 
         return dragonStats;
     }
@@ -126,7 +126,7 @@ public class DragonCreator {
         System.out.println("Teie " + playerDragon);
         System.out.println();
 
-        scan.close();
+        //scan.close();
 
         return playerDragon;
     }

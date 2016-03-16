@@ -26,8 +26,10 @@ public class Game {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Lahing on alanud!");
+        Thread.sleep(2000);
         System.out.println("Teie lohe võitleb tugeva vastasega!");
         System.out.println(opponentDragon);
+        Thread.sleep(3000);
         System.out.println();
 
         while (BattleSimulator.dragonsNotDead(playerDragon, opponentDragon)) {
@@ -39,17 +41,31 @@ public class Game {
 
                 playerDragon.playerCastspell(spellNumber, opponentDragon);
             }
-            else
+            else {
                 playerDragon.playerMeleeAttack(opponentDragon);
+            }
 
             System.out.println(opponentDragon.getName() + " has " + opponentDragon.getHealth() + " health remaining!");
+            Thread.sleep(2500);
             System.out.println();
 
             opponentDragon.simulationCombinedAttackWithOutput(playerDragon);
 
             System.out.println(playerDragon.getName() + " has " + playerDragon.getHealth() + " health remaining!");
+            Thread.sleep(2500);
             System.out.println();
         }
+
+        if (playerDragon.health > 0 && opponentDragon.health <= 0) {
+            System.out.println("Teie lohe " + playerDragon.name + " võitis!!!");
+        }
+
+        else if (opponentDragon.health > 0 && playerDragon.health <= 0) {
+            System.out.println("See kord võitis vastaslohe " + opponentDragon.name + "!");
+        }
+        else
+            System.out.println("Mõlemad lohed surid väärikalt pingelises lahingus!");
+
         scan.close();
     }
 }
