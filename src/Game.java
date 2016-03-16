@@ -21,7 +21,7 @@ public class Game {
 
     public static void main(String[] args) throws Exception{
 
-        Dragon opponentDragon = DragonCreator.defaultDragons[(int) (Math.random() * DragonCreator.defaultDragons.length)];
+        Dragon opponentDragon = new Dragon(DragonCreator.defaultDragons[(int) (Math.random() * DragonCreator.defaultDragons.length)]);
         Dragon playerDragon = DragonCreator.getPlayerDragon();
 
         Scanner scan = new Scanner(System.in);
