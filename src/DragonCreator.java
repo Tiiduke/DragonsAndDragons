@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DragonCreator {
 
-    public static Dragon[] defaultDragons = getDragons();
+    public static final Dragon[] defaultDragons = getDragons();
 
     public static Dragon[] getDragons() {
 
@@ -37,15 +37,15 @@ public class DragonCreator {
     private static void printDragonDescriptions() {
 
         System.out.println("Saadaval on viit tüüpi draakoneid: ");
-        System.out.println("1. Tavaline draakon - keskmise tugevusega draakon, puuduvad erilised omadused!");
-        System.out.println("2. Pimeduse draakon - tugev võitlusdraakon, kelle loitsud on äärmiselt tugevad, kuid mille kasutamisvõimalus on äärmiselt väike!");
-        System.out.println("3. Roheline draakon - tugev loitsija, kes on tugev ka tavavõitluses!");
-        System.out.println("4. Punane draakon - äärmiselt tugev loitsija, kuid tavavõitluses nõrk!");
-        System.out.println("5. Tähedraakon - väga tugev loitsija, kes on varieeruva tugevusega tavavõitluses!");
+        System.out.println("1. Pimeduse draakon - tugev võitlusdraakon, kelle loitsud on äärmiselt tugevad, kuid mille kasutamisvõimalus on äärmiselt väike!");
+        System.out.println("2. Roheline draakon - tugev loitsija, kes on tugev ka tavavõitluses!");
+        System.out.println("3. Punane draakon - äärmiselt tugev loitsija, kuid tavavõitluses nõrk!");
+        System.out.println("4. Tähedraakon - väga tugev loitsija, kes on varieeruva tugevusega tavavõitluses!");
+        System.out.println("5. Tavaline draakon - keskmise tugevusega draakon, puuduvad erilised omadused!");
 
     }
 
-    private static int[] getPlayerArray() throws Exception {
+    private static int[] getPlayerArray() {
 
         Scanner scan = new Scanner(System.in);
 
@@ -56,14 +56,15 @@ public class DragonCreator {
         System.out.println("Kui valite viimasele statistikule liiga vähe punkte, siis määratakse ülejäänud statistikupunkti eludesse!");
         System.out.println("Kui soovite poole pealt määramist uuesti alustada, vajutage Enter!");
 
-        while (remainingStatPoints > 0)
+
         for (int i = 0; i < dragonStats.length; i++) {
             printNextQuestion(i);
             printRemainingStatPoints(remainingStatPoints);
 
             String vastus = scan.nextLine();
             if (vastus.equals("")) {
-                i = 0;
+                i = -1;
+                remainingStatPoints = 100;
                 continue;
             }
 
@@ -103,7 +104,7 @@ public class DragonCreator {
         }
     }
 
-    public static Dragon getPlayerDragon () throws Exception {
+    public static Dragon getPlayerDragon () {
 
         Scanner scan = new Scanner(System.in);
 
@@ -114,14 +115,17 @@ public class DragonCreator {
         System.out.println("Millist tüüpi draakonit soovite? 1-5");
         int valik = Integer.parseInt(scan.nextLine());
 
-
-        Dragon playerDragon = defaultDragons[valik];
+        Dragon playerDragon = new Dragon(defaultDragons[valik - 1]);
 
         System.out.println("Kuidas te sooviksite oma draakonit nimetada?");
         playerDragon.setName(scan.nextLine());
 
         if (dragonCreateChoice.equals("Y"))
             playerDragon.assignStats(getPlayerArray());
+
+        System.out.println("Teie " + playerDragon);
+        System.out.println();
+
         scan.close();
 
         return playerDragon;

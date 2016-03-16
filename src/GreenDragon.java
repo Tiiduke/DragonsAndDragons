@@ -44,4 +44,5 @@ public class GreenDragon extends Dragon implements AssignStats{
     public void resetStats() {
         assignStats(stats);
     }
+
 }

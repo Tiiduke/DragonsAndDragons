@@ -44,4 +44,5 @@ public class DarknessDragon extends Dragon implements AssignStats {
     public void resetStats() {
         assignStats(stats);
     }
+
 }

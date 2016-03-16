@@ -105,8 +105,8 @@ public class BattleSimulator {
     public static Dragon getFightWinner(Dragon dragon1, Dragon dragon2) {
 
         while(dragonsNotDead(dragon1, dragon2)) {
-            dragon1.simulationAttack(dragon2);
-            dragon2.simulationAttack(dragon1);
+            dragon1.simulationCombinedAttack(dragon2);
+            dragon2.simulationCombinedAttack(dragon1);
         }
 
         if (dragon1.health > 0)

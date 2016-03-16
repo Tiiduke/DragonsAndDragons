@@ -125,14 +125,14 @@ public class Dragon implements AssignStats{
         this.critChance = critChance;
     }
 
-    public void simulationAttack(Dragon target) {
+    public void simulationCombinedAttack(Dragon target) {
         if (Math.random() > target.blockChance)
             if (Math.random() < this.spellCastChance)
             {
                 int random = (int) (Math.random() * this.spells.length);
                 Spell spell = this.spells[random];
 
-                target.health -= (spell.netDamage() + this.spellDamage);
+                simulationCastSpell(spell, target);
             }
             else
             {
@@ -145,17 +145,25 @@ public class Dragon implements AssignStats{
             }
     }
 
-    public void simulationAttackWithOutput(Dragon target) {
+    public void simulationCastSpell(Spell spell, Dragon target) {
+        if (Math.random() > target.blockChance) {
+            int damage = spell.netDamage() + spellDamage;
+            target.health -= damage;
+        }
+    }
 
-        System.out.println(name + " has attacked " + target.getName());
+    public void simulationCombinedAttackWithOutput(Dragon target) {
 
-        if (Math.random() > target.blockChance)
-            if (Math.random() < this.spellCastChance)
-            {
-                castSpell(target);
+        if (Math.random() > target.blockChance) {
+            if (Math.random() < this.spellCastChance) {
+
+                Spell spell = spells[(int) (Math.random() * spells.length)];
+                castSpellWithOutput(spell, target);
             }
-            else
-            {
+            else {
+
+                System.out.print(name + " has attacked " + target.name);
+
                 double damage = armorDamage(target);
 
                 if (Math.random() < critChance) {
@@ -167,37 +175,33 @@ public class Dragon implements AssignStats{
                     System.out.println("\n" + name + " did " + damage + " damage to " + target.name + "!");
                 }
             }
-
+        }
     }
 
-    public void playerAttack(Dragon target) {
+    public void playerMeleeAttack(Dragon target) {
 
-        System.out.println(name + " has attacked " + target.getName());
+        System.out.print(name + " has attacked " + target.name);
 
-        if (Math.random() > target.blockChance)
-            if (Math.random() < this.spellCastChance) {
+        if (Math.random() > target.blockChance) {
+            double damage = armorDamage(target);
 
-                Scanner scan = new Scanner(System.in);
-                int spellNumber = Integer.parseInt(scan.nextLine());
-
-                castSpell(spellNumber, target);
-
-                scan.close();
+            if (Math.random() < critChance) {
+                target.health -= 2 * damage;
+                System.out.println("\n" + name + " did critical damage worth " + damage * 2 + " to " + target.name + "!");
+            } else {
+                target.health -= damage;
+                System.out.println("\n" + name + " did " + damage + " damage to " + target.name + "!");
             }
-            else {
-                double damage = armorDamage(target);
+        }
+        else
+            System.out.println("\n" + target.name + " blocked the attack!");
+    }
 
-                if (Math.random() < critChance) {
-                    target.health -= 2 * damage;
-                    System.out.println("\n" + name + " did critical damage worth " + damage * 2 + " to " + target.name + "!");
-                } else {
-                    target.health -= damage;
-                    System.out.println("\n" + name + " did " + damage + " damage to " + target.name + "!");
-                }
-            }
-                else
-                    System.out.println("\n" + target.name + " blocked the attack!");
+    public void playerCastspell(int spellNumber, Dragon target) {
 
+        Spell spell = spells[spellNumber];
+
+        castSpellWithOutput(spell, target);
     }
 
     private int netDamage() {
@@ -220,19 +224,7 @@ public class Dragon implements AssignStats{
             return netDamage();
     }
 
-    public void castSpell(Dragon target) {
-
-        Spell spell = spells[(int) (Math.random() * spells.length)];
-        applySpell(spell, target);
-    }
-
-    public void castSpell(int spellNumber, Dragon target) {
-
-        Spell spell = spells[spellNumber];
-        applySpell(spell, target);
-    }
-
-    private void applySpell(Spell spell, Dragon target) {
+    private void castSpellWithOutput(Spell spell, Dragon target) {
         if (Math.random() > target.blockChance) {
             int damage = spell.netDamage() + spellDamage;
             target.health -= damage;
@@ -260,12 +252,23 @@ public class Dragon implements AssignStats{
     }
 
     public String toString() {
+        String description = "Draakonil " + name + " on ";
+        String stats = health + " elu, " + armor + " rüüd, " + attackDamageMinimum + "-" + attackDamageMaximum + " ründejõudu, " +
+                spellDamage + " loitsimisjõudu, " + blockChance * 100 + "% võimalus blokeerida rünnakuid, " +
+                critChance * 100 + "% võimalus teha eriti tugev rünnak ja " + spellCastChance * 100 + "% võimalus kasutada loitsu!";
 
-        //String stats = health + " " + armor + " " + attackDamageMinimum + " " + attackDamageMaximum + " " + spellDamage + " " + blockChance + " " + critChance;
-        String stats = "";
-        for (int i = 0; i < this.stats.length; i++)
-            stats += this.stats[i] + " ";
 
-        return stats + name + this.spells[0];
+        return description + stats;
+    }
+
+    public String spellsToString() {
+
+        String spellString = "";
+
+        for (int i = 0; i < spells.length; i++) {
+            spellString += (i + 1) + ". " + spells[i] + "\n";
+        }
+
+        return spellString;
     }
 }
