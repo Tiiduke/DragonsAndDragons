@@ -40,9 +40,9 @@ public class StarDragon extends Dragon implements AssignStats{
         critChance = stats[4] / 175.0;
         blockChance = stats[5] * 0.9 / 100.0;
     }
+
     @Override
     public void resetStats() {
         assignStats(stats);
     }
-
 }

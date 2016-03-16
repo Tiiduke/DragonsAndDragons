@@ -40,9 +40,9 @@ public class GreenDragon extends Dragon implements AssignStats{
         critChance = stats[4] / 125.0;
         blockChance = stats[5] * 0.9 / 125.0;
     }
+
     @Override
     public void resetStats() {
         assignStats(stats);
     }
-
 }
