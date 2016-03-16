@@ -76,6 +76,9 @@ public abstract class DragonCreator {
 
             dragonStats[i] = Integer.parseInt(vastus);
             remainingStatPoints -= Integer.parseInt(vastus);
+
+            if (remainingStatPoints <= 0)
+                break;
         }
 
         if (remainingStatPoints > 0)
