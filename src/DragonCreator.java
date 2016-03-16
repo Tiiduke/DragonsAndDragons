@@ -3,7 +3,7 @@
  */
 import java.util.Scanner;
 
-public class DragonCreator {
+public abstract class DragonCreator {
 
     public static final Dragon[] defaultDragons = getDragons();
 

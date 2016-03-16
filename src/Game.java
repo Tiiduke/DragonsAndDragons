@@ -18,6 +18,7 @@ public class Game {
 
         return spellNumber - 1;
     }
+
     public static void main(String[] args) throws Exception{
 
         Dragon opponentDragon = DragonCreator.defaultDragons[(int) (Math.random() * DragonCreator.defaultDragons.length)];
