@@ -3,6 +3,7 @@
  */
 public class Stats {
 
+    //Korrutab array suurimaid elemente 0.8ga ning jaotab kõigile elementidele ülejäägi suurimatest elementidest
     public static void balanceArray(double[] probabilities) {
 
         double sum = 0.0;
@@ -23,6 +24,7 @@ public class Stats {
         }
     }
 
+    //Annab tõenäosuste arrayle vastava draakonistatistikute array
     public static int[] getStats(double[] probabilities) {
 
         int[] stats = new int[probabilities.length];

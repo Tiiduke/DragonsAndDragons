@@ -3,6 +3,10 @@ import java.util.ArrayList;
 /**
  * Created by Tiit on 10.03.2016.
  */
+/*
+ * Klass mis on mõeldud lahingute simuleerimiseks draakonite vahel,
+ * et oleks võimalik draakonite statistikuid ja Spelle balansseerida.
+ */
 public class BattleSimulator {
 
     public static ArrayList<Dragon> createDragons(int amountOfBalances) {
