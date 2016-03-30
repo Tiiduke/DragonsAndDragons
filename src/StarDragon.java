@@ -7,16 +7,6 @@ public class StarDragon extends Dragon implements AssignStats{
     public static Spell novasMight = new Spell("Nova's Might", 25, 40);
     public static Spell celestialWrath = new Spell("Celestial Wrath", 25, 45);
 
-    public StarDragon(String name, double health, double armor,
-                      int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
-                      double blockChance, double critChance) {
-        super(name, health, armor,
-                attackDamageMinimum, attackDamageMaximum, spellDamage,
-                blockChance, critChance);
-        this.spells = new Spell[] {starburst, novasMight, celestialWrath};
-        this.spellCastChance = 0.3;
-    }
-
     public StarDragon() {
         this.spells = new Spell[] {starburst, novasMight, celestialWrath};
         this.spellCastChance = 0.3;

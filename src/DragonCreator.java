@@ -14,7 +14,6 @@ public abstract class DragonCreator {
                 new DarknessDragon(),
                 new GreenDragon(),
                 new StarDragon(),
-                new Dragon(),
         };
 
         double[] probabilities = BooleanVariation.getProbabilityArray(new boolean[] {true, true, true, true, true, true});
@@ -26,7 +25,6 @@ public abstract class DragonCreator {
                 case 1: dragonTypes[i].name = "Darkness Dragon"; break;
                 case 2: dragonTypes[i].name = "Green Dragon"; break;
                 case 3: dragonTypes[i].name = "White Lotus"; break;
-                case 4: dragonTypes[i].name = "King Black Dragon"; break;
                 default: dragonTypes[i].name = "Default";
             }
         }
@@ -36,13 +34,11 @@ public abstract class DragonCreator {
 
     private static void printDragonDescriptions() {
 
-        System.out.println("Saadaval on viit tüüpi draakoneid: ");
+        System.out.println("Saadaval on nelja tüüpi draakoneid: ");
         System.out.println("1. Punane draakon - äärmiselt tugev loitsija, kuid tavavõitluses nõrk!");
         System.out.println("2. Pimeduse draakon - tugev võitlusdraakon, kelle loitsud on äärmiselt tugevad, kuid mille kasutamisvõimalus on äärmiselt väike!");
         System.out.println("3. Roheline draakon - tugev loitsija, kes on tugev ka tavavõitluses!");
         System.out.println("4. Tähedraakon - väga tugev loitsija, kes on varieeruva tugevusega tavavõitluses!");
-        System.out.println("5. Tavaline draakon - keskmise tugevusega draakon, puuduvad erilised omadused!");
-
     }
 
     private static int[] getPlayerArray() {

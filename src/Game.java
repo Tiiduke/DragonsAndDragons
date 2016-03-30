@@ -30,7 +30,7 @@ public class Game {
         Thread.sleep(2000);
         System.out.println("Teie lohe võitleb tugeva vastasega!");
         System.out.println(opponentDragon);
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         System.out.println();
 
         while (BattleSimulator.dragonsNotDead(playerDragon, opponentDragon)) {

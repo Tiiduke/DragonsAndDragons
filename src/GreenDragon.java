@@ -7,16 +7,6 @@ public class GreenDragon extends Dragon implements AssignStats{
     public static Spell powerOfTheWild = new Spell("Power of the Wild", 5, 25);
     public static Spell emeraldBreath = new Spell("Emerald Breath", 20, 20);
 
-    public GreenDragon(String name, double health, double armor,
-                       int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
-                       double blockChance, double critChance) {
-        super(name, health, armor,
-                attackDamageMinimum, attackDamageMaximum, spellDamage,
-                blockChance, critChance);
-        this.spells = new Spell[] {centaursCall, powerOfTheWild, emeraldBreath};
-        this.spellCastChance = 0.25;
-    }
-
     public GreenDragon() {
         this.spells = new Spell[] {centaursCall, powerOfTheWild, emeraldBreath};
         this.spellCastChance = 0.25;

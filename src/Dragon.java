@@ -22,26 +22,6 @@ public class Dragon implements AssignStats{
 
     double spellCastChance;
 
-    public Spell flameBreath = new Spell("Flame Breath", 15, 25);
-    public Spell poisonBreath = new Spell("Poison Breath", 20, 25);
-    public Spell kappa = new Spell("Kappa", 30, 69);
-
-
-    public Dragon(String name, double health, double armor,
-                  int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
-                  double blockChance, double critChance) {
-        this.name = name;
-        this.health = health;
-        this.armor = armor;
-        this.attackDamageMinimum = attackDamageMinimum;
-        this.attackDamageMaximum = attackDamageMaximum;
-        this.spellDamage = spellDamage;
-        this.blockChance = blockChance;
-        this.critChance = critChance;
-        this.spells = new Spell[] {flameBreath, poisonBreath, kappa};
-        this.spellCastChance = 0.33;
-    }
-
     public Dragon(Dragon dragon) {
         this.name = dragon.name;
         this.health = dragon.health;
@@ -55,11 +35,7 @@ public class Dragon implements AssignStats{
         this.spellCastChance = dragon.spellCastChance;
     }
 
-
-    public Dragon() {
-        this.spells = new Spell[] {flameBreath, poisonBreath, kappa};
-        this.spellCastChance = 0.33;
-    }
+    public Dragon() {}
 
     public String getName() {
         return name;

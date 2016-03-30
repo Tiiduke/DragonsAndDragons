@@ -7,16 +7,6 @@ public class DarknessDragon extends Dragon implements AssignStats {
     public static Spell coverOfDarkness = new Spell("Cover Of Darkness", 100, 125);
     public static Spell endOfRealm = new Spell("End of Realm", 150, 150);
 
-    public DarknessDragon(String name, double health, double armor,
-                          int attackDamageMinimum, int attackDamageMaximum, int spellDamage,
-                          double blockChance, double critChance) {
-        super(name, health, armor,
-                attackDamageMinimum, attackDamageMaximum, spellDamage,
-                blockChance, critChance);
-        this.spells = new Spell[] {dragonUtopia, coverOfDarkness, endOfRealm};
-        this.spellCastChance = 0.05;
-    }
-
     public DarknessDragon() {
         this.spells = new Spell[] {dragonUtopia, coverOfDarkness, endOfRealm};
         this.spellCastChance = 0.05;
