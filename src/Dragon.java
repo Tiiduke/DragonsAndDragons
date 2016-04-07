@@ -7,20 +7,12 @@ public class Dragon implements AssignStats{
 
     String name;
 
-    double health;
-    double armor;
+    double health, armor, blockChance, critChance, spellCastChance;
 
-    int attackDamageMinimum;
-    int attackDamageMaximum;
-    int spellDamage;
-
-    double blockChance;
-    double critChance;
+    int attackDamageMinimum, attackDamageMaximum, spellDamage;
 
     int[] stats;
     Spell[] spells;
-
-    double spellCastChance;
 
     public Dragon(Dragon dragon) {
         this.name = dragon.name;
@@ -36,6 +28,30 @@ public class Dragon implements AssignStats{
     }
 
     public Dragon() {}
+
+    public int[] getStats() {
+        return stats;
+    }
+
+    public void setStats(int[] stats) {
+        this.stats = stats;
+    }
+
+    public Spell[] getSpells() {
+        return spells;
+    }
+
+    public void setSpells(Spell[] spells) {
+        this.spells = spells;
+    }
+
+    public double getSpellCastChance() {
+        return spellCastChance;
+    }
+
+    public void setSpellCastChance(double spellCastChance) {
+        this.spellCastChance = spellCastChance;
+    }
 
     public String getName() {
         return name;

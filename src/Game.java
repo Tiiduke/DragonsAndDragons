@@ -21,7 +21,7 @@ public class Game {
 
     public static void main(String[] args) throws Exception{
 
-        Dragon opponentDragon = new Dragon(DragonCreator.defaultDragons[(int) (Math.random() * DragonCreator.defaultDragons.length)]);
+        Dragon opponentDragon = new Dragon(DragonCreator.dragonTypes[(int) (Math.random() * DragonCreator.dragonTypes.length)]);
         Dragon playerDragon = DragonCreator.getPlayerDragon();
 
         Scanner scan = new Scanner(System.in);
@@ -36,7 +36,7 @@ public class Game {
         while (BattleSimulator.dragonsNotDead(playerDragon, opponentDragon)) {
             if (Math.random() < playerDragon.spellCastChance) {
 
-                System.out.println(playerDragon.name + " has attacked " + opponentDragon.name);
+                System.out.println(playerDragon.getName() + " has attacked " + opponentDragon.getName());
 
                 int spellNumber = getSpellInt(playerDragon);
 
@@ -58,11 +58,11 @@ public class Game {
         }
 
         if (playerDragon.health > 0 && opponentDragon.health <= 0) {
-            System.out.println("Teie lohe " + playerDragon.name + " võitis!!!");
+            System.out.println("Teie lohe " + playerDragon.getName() + " võitis!!!");
         }
 
         else if (opponentDragon.health > 0 && playerDragon.health <= 0) {
-            System.out.println("See kord võitis vastaslohe " + opponentDragon.name + "!");
+            System.out.println("See kord võitis vastaslohe " + opponentDragon.getName() + "!");
         }
         else
             System.out.println("Mõlemad lohed surid väärikalt pingelises lahingus!");

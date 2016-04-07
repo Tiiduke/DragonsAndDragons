@@ -22,9 +22,9 @@ public class GreenDragon extends Dragon implements AssignStats{
     public void assignStats(int[] stats) {
         this.stats = stats;
         this.spellCastChance = 0.25;
-        health = 125 + stats[0] * 13.0;
+        health = 170 + stats[0] * 13.0;
         armor = stats[1] * 9.5;
-        attackDamageMinimum = 3 + (int) (stats[2] * 0.45);
+        attackDamageMinimum = 3 + (int) (stats[2] * 0.55);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.65);
         spellDamage = (int) (stats[3] * 0.80);
         critChance = stats[4] / 125.0;

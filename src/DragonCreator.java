@@ -5,28 +5,22 @@ import java.util.Scanner;
 
 public abstract class DragonCreator {
 
-    public static final Dragon[] defaultDragons = getDragons();
+    public static final Dragon[] dragonTypes = {
+            new RubyDragon(),
+            new DarknessDragon(),
+            new GreenDragon(),
+            new StarDragon(),
+    };
 
     public static Dragon[] getDragons() {
 
-        Dragon[] dragonTypes = {
-                new RubyDragon(),
-                new DarknessDragon(),
-                new GreenDragon(),
-                new StarDragon(),
-        };
+        String[] dragonNames = {"Red Dragon", "Darkness Dragon", "Green Dragon", "White Lotus"};
 
         double[] probabilities = BooleanVariation.getProbabilityArray(new boolean[] {true, true, true, true, true, true});
 
         for (int i = 0; i < dragonTypes.length; i++) {
             dragonTypes[i].assignStats(Stats.getStats(probabilities));
-            switch(i) {
-                case 0: dragonTypes[i].name = "Red Dragon"; break;
-                case 1: dragonTypes[i].name = "Darkness Dragon"; break;
-                case 2: dragonTypes[i].name = "Green Dragon"; break;
-                case 3: dragonTypes[i].name = "White Lotus"; break;
-                default: dragonTypes[i].name = "Default";
-            }
+            dragonTypes[i].setName(dragonNames[i]);
         }
 
         return dragonTypes;
@@ -114,7 +108,7 @@ public abstract class DragonCreator {
         System.out.println("Millist tüüpi draakonit soovite? 1-5");
         int valik = Integer.parseInt(scan.nextLine());
 
-        Dragon playerDragon = new Dragon(defaultDragons[valik - 1]);
+        Dragon playerDragon = new Dragon(dragonTypes[valik - 1]);
 
         System.out.println("Kuidas te sooviksite oma draakonit nimetada?");
         playerDragon.setName(scan.nextLine());

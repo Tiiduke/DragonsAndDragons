@@ -22,7 +22,7 @@ public class StarDragon extends Dragon implements AssignStats{
     public void assignStats(int[] stats) {
         this.stats = stats;
         this.spellCastChance = 0.3;
-        health = 70 + stats[0] * 10.5;
+        health = 110 + stats[0] * 10.5;
         armor = stats[1] * 5.5;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.35);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.65);

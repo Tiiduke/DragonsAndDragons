@@ -27,13 +27,7 @@ public class BattleSimulator {
                 for (int j = 0; j < DRAGON_TYPE_COUNT; j++) {
                     Dragon dragon;
 
-                    switch (j) {
-                        case 0: dragon = new GreenDragon(); break;
-                        case 1: dragon = new DarknessDragon(); break;
-                        case 2: dragon = new StarDragon(); break;
-                        case 3: dragon = new RubyDragon(); break;
-                        default: dragon = new Dragon(); break;
-                    }
+                    dragon = DragonCreator.dragonTypes[j];
 
                     dragon.assignStats(Stats.getStats(probabilities));
                     dragons.add(dragon);
@@ -73,8 +67,8 @@ public class BattleSimulator {
                     testDragon.resetStats();
                     typeDragon.resetStats();
 
-                    if (winner.getClass() == typeDragon.getClass()) {
-                        addElements(total, winner.stats);
+                    if (winner.getClass() == typeDragon.getClass() && testDragon.getClass() != typeDragon.getClass()) {
+                        addElements(total, winner.getStats());
                         winCount++;
                     }
 
@@ -83,13 +77,12 @@ public class BattleSimulator {
             }
         }
 
+        fightCount *= 0.75;
+
 
         divideElements(total, winCount);
 
         String statString = arrayToString(total);
-
-        winCount -= fightCount / 4;
-        fightCount = fightCount * 3 / 4;
 
         return statString + " Fight count: " + fightCount + " Win count: " + winCount + " Win percentage: " + winCount * 100.0 / fightCount + "%";
 
@@ -97,7 +90,7 @@ public class BattleSimulator {
 
     public static ArrayList<Dragon> getTypeDragons(ArrayList<Dragon> allDragons, Class<?> dragonType) {
 
-        ArrayList<Dragon> typeDragons = new ArrayList<Dragon>();
+        ArrayList<Dragon> typeDragons = new ArrayList<>();
 
         for (Dragon dragon : allDragons)
             if (dragonType == dragon.getClass())
@@ -113,13 +106,13 @@ public class BattleSimulator {
             dragon2.simulationCombinedAttack(dragon1);
         }
 
-        if (dragon1.health > 0)
+        if (dragon1.getHealth() > 0)
             return dragon1;
         return dragon2;
     }
 
     public static boolean dragonsNotDead(Dragon dragon1, Dragon dragon2) {
-        return dragon1.health > 0 && dragon2.health > 0;
+        return dragon1.getHealth() > 0 && dragon2.getHealth() > 0;
     }
 
     private static String arrayToString(double[] array) {
@@ -137,7 +130,7 @@ public class BattleSimulator {
     private static void divideElements(double[] array, int amount) {
 
         for (int i = 0; i < array.length; i++) {
-            array[i] /= amount;
+            array[i] /= (double) amount;
         }
 
     }
@@ -151,8 +144,8 @@ public class BattleSimulator {
 
     public static void main(String[] args) {
 
-        //ArrayList<Dragon> dragons = createDragons(5);
+        ArrayList<Dragon> dragons = createDragons(5);
 
-        //showAverageDragonStats(dragons, 1);
+        showAverageDragonStats(dragons, 1);
     }
 }

@@ -22,7 +22,7 @@ public class RubyDragon extends Dragon implements AssignStats{
     public void assignStats(int[] stats) {
         this.stats = stats;
         this.spellCastChance = 0.40;
-        health = 80 + stats[0] * 7.5;
+        health = 120 + stats[0] * 7.5;
         armor = stats[1] * 5.0;
         attackDamageMinimum = 1 + (int) (stats[2] * 0.3);
         attackDamageMaximum = 1 + (int) (stats[2] * 0.45);

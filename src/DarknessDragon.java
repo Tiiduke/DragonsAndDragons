@@ -22,7 +22,7 @@ public class DarknessDragon extends Dragon implements AssignStats {
     public void assignStats(int[] stats) {
         this.stats = stats;
         this.spellCastChance = 0.05;
-        health = 100 + stats[0] * 13.5;
+        health = 150 + stats[0] * 14.0;
         armor = stats[1] * 9.0;
         attackDamageMinimum = 3 + (int) (stats[2] * 0.50);
         attackDamageMaximum = 3 + (int) (stats[2] * 0.70);
